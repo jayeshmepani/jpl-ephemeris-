@@ -3,6 +3,15 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 BUILD_DIR="$ROOT/build"
+
+if [[ "${1:-}" == "--build-dir" ]]; then
+  if [[ -z "${2:-}" ]]; then
+    echo "--build-dir requires a path" >&2
+    exit 2
+  fi
+  BUILD_DIR="$2"
+fi
+
 OUT_DIR="$BUILD_DIR/differential_engine_matrix"
 RAW_DIR="$OUT_DIR/engine_matrix.raw"
 PROBE="$BUILD_DIR/jme_call_probe"

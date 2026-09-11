@@ -138,6 +138,7 @@ if (JME_BUILD_TESTS)
     add_test(
         NAME engine_matrix
         COMMAND /bin/bash ${CMAKE_CURRENT_SOURCE_DIR}/tools/run_engine_matrix.sh
+                --build-dir ${CMAKE_CURRENT_BINARY_DIR}
     )
 
     find_program(PWSH_EXECUTABLE NAMES pwsh powershell)
